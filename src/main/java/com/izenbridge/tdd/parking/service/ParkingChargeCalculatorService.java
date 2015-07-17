@@ -2,10 +2,15 @@ package com.izenbridge.tdd.parking.service;
 
 import java.util.Date;
 
+import com.izenbridge.tdd.parking.data.ParkingRatesDAO;
+
 public class ParkingChargeCalculatorService {
 
-	private static final int parkingFirstHour = 20;
-	private static final int parkingSubsequentHours = 10;
+	ParkingRatesDAO parkingRatesDAO;
+	
+	public void setParkingRatesDAO(ParkingRatesDAO parkingRatesDAO) {
+		this.parkingRatesDAO = parkingRatesDAO;
+	}
 
 	public int calculateParkingCharge(Date inTime, Date outTime) {
 		if (inTime.after(outTime)) {
@@ -13,7 +18,8 @@ public class ParkingChargeCalculatorService {
 		}
 		int parkingTimeInMinutes = (int) ((outTime.getTime() - inTime.getTime())/60000);
 		int parkingTimeInHours = (int)Math.ceil(parkingTimeInMinutes/60.0);
-		return parkingFirstHour + parkingSubsequentHours * (parkingTimeInHours-1); 
+		return parkingRatesDAO.getParkingChargeFirstHour() 
+				+ parkingRatesDAO.getParkingChargeSubsequentHours() * (parkingTimeInHours-1); 
 	}
 
 }

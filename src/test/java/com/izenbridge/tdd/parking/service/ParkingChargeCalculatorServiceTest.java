@@ -6,17 +6,23 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.izenbridge.tdd.parking.data.ParkingRatesDAO;
+
 public class ParkingChargeCalculatorServiceTest {
 
 	private static final int MILLIS_IN_MINUTE = 60000; 
 	private static final int MILLIS_IN_HOUR = 3600000; 
 
+	private ParkingRatesDAO parkingRatesDAO;
 	private ParkingChargeCalculatorService parkingChargeCalculatorService;
+
 	private Date outTime;
 
 	@Before
 	public void setupForEachTest() {
+		parkingRatesDAO = new ParkingRatesDAO();
 		parkingChargeCalculatorService = new ParkingChargeCalculatorService();
+		parkingChargeCalculatorService.setParkingRatesDAO(parkingRatesDAO);
 		outTime = new Date();
 	}
 	
