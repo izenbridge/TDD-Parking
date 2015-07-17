@@ -86,4 +86,10 @@ public class ParkingChargeCalculatorServiceTest {
 		Assert.assertEquals(250, parkingChargeCalculatorService.calculateParkingCharge(inTime, outTime));
 	}
 
+	@Test(expected=IllegalArgumentException.class)
+	public void throwsWhenInTimeAfterOutTime() {
+		Date inTime = new Date(outTime.getTime() + MILLIS_IN_MINUTE);
+		parkingChargeCalculatorService.calculateParkingCharge(inTime, outTime);
+	}
+
 }
