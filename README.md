@@ -30,8 +30,8 @@ v6 - [PENDING] Make the unit tests independent of DAO changes (using Mocks)
 * 'Clone a Git Respository' using GitHub location https://github.com/izenbridge/TDD-Parking.git
 * Import Project
 	- Right click Git Repository and select 'Import Projects', and follow prompts
-* Switch to branch "CSD-Bangalore-July10"
-	- Right click the project... Team >> Switch to >> Branch >> "CSD-Bangalore-July10"
+* (optional) Switch to a specific tag, say 'v1' if you wish to do the exercise from start:
+	- Right click the project... Team >> Switch to >> Other >> Tags >> 'v1'
 * Update build path to include junit-4.12.jar and hamcrest-core-1.3.jar
 	- Alternatively, you may convert this into a maven project and add maven dependencies for junit and hamcrest jars
 
